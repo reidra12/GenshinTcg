@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://d033oyjgjniu5"]
+
+[ext_resource type="Script" path="res://scripts/deck_builder.gd" id="1_5m47k"]
+[ext_resource type="Texture2D" uid="uid://dex2uw7o32pbk" path="res://asset/building-a-deck-genshin-impact-genius-invokation-tcg.png" id="1_pk27v"]
+[ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_nclo7"]
+
+[node name="DeckBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5m47k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 321.5)
+scale = Vector2(0.597, 0.82125)
+texture = ExtResource("1_pk27v")
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 585.0
+offset_right = 445.0
+offset_bottom = 637.0
+theme_override_fonts/font = ExtResource("3_nclo7")
+theme_override_font_sizes/font_size = 31
+text = "save"
+
+[node name="Load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 588.0
+offset_right = 866.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("3_nclo7")
+theme_override_font_sizes/font_size = 31
+text = "load"
+
+[node name="HScrollBar" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 66.0
+offset_top = 25.0
+offset_right = 1088.0
+offset_bottom = 234.0
+vertical_scroll_mode = 0
+
+[node name="DeckList" type="HBoxContainer" parent="HScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SaveDeckName" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 286.0
+offset_right = 702.0
+offset_bottom = 333.0
+
+[node name="LoadDeck" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(392, 159)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray(".json", ".json", ".json")
+show_hidden_files = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 77.0
+offset_top = 352.0
+offset_right = 1083.0
+offset_bottom = 571.0
+
+[node name="CardLibrary" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]

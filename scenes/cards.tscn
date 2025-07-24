@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://521nw8bq4qtq"]
+
+[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="1_b3pf6"]
+[ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_gtdjw"]
+[ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_55yd5"]
+[ext_resource type="Texture2D" uid="uid://bi3jvsm76rvcp" path="res://asset/empty energy.png" id="4_t4r8k"]
+[ext_resource type="Texture2D" uid="uid://de6tgso32xhly" path="res://asset/energy-card-icon.png" id="5_oktdt"]
+
+[node name="Cards" type="Node2D"]
+position = Vector2(613, 357)
+
+[node name="CardImg" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_b3pf6")
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthContainer" type="HBoxContainer" parent="Health"]
+layout_mode = 0
+offset_left = -68.0
+offset_top = -118.0
+offset_right = 72.0
+offset_bottom = 54.0
+scale = Vector2(0.2, 0.2)
+
+[node name="TextureRect" type="TextureRect" parent="Health/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("2_gtdjw")
+
+[node name="HealthText" type="Label" parent="Health"]
+texture_filter = 2
+layout_mode = 0
+offset_left = -63.0
+offset_top = -112.0
+offset_right = -45.0
+offset_bottom = -89.0
+theme_override_colors/font_color = Color(0.997538, 0.96027, 0.830021, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_55yd5")
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+
+[node name="EnergyContainer" type="VBoxContainer" parent="."]
+offset_left = 46.0
+offset_top = -83.0
+offset_right = 127.0
+offset_bottom = 43.0
+scale = Vector2(0.295181, 0.459626)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Energy" type="Control" parent="EnergyContainer"]
+custom_minimum_size = Vector2(81, 126)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="EnergyContainer/Energy"]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 52.0
+texture = ExtResource("4_t4r8k")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="EnergyContainer/Energy"]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 52.0
+texture = ExtResource("5_oktdt")
+expand_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

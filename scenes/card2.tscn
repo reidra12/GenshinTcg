@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxnsgsju46w8m"]
+
+[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="1_uls70"]
+[ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_pidm7"]
+[ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_xhqcp"]
+[ext_resource type="Texture2D" uid="uid://bi3jvsm76rvcp" path="res://asset/empty energy.png" id="4_6bm3k"]
+[ext_resource type="Texture2D" uid="uid://de6tgso32xhly" path="res://asset/energy-card-icon.png" id="5_sdtce"]
+
+[node name="Card2" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.65, 0.618056)
+texture = ExtResource("1_uls70")
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -120.0
+offset_top = -227.0
+offset_right = -80.0
+offset_bottom = -187.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Health"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 56.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Health/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_pidm7")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Health"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(1, 0.935888, 0.717101, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_xhqcp")
+theme_override_font_sizes/font_size = 29
+text = "2"
+horizontal_alignment = 1
+
+[node name="EnergyContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+offset_left = 110.0
+offset_top = -181.667
+offset_right = 150.0
+offset_bottom = -31.6667
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Energy" type="Control" parent="EnergyContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnergyContainer/Energy"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_6bm3k")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="EnergyContainer/Energy"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_sdtce")
+expand_mode = 3
+
+[node name="Energy2" type="Control" parent="EnergyContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnergyContainer/Energy2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_6bm3k")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="EnergyContainer/Energy2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_sdtce")
+expand_mode = 3

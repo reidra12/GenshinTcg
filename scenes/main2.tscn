@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4aqw2i6vaj4s"]
+
+[ext_resource type="Texture2D" uid="uid://vhwoa2ymv8l4" path="res://asset/Fontaine_Card_Boxs.png" id="1_fe42f"]
+
+[node name="main2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(566, 319)
+scale = Vector2(1.743, 1.57)
+texture = ExtResource("1_fe42f")

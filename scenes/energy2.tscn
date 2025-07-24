@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0x6g0wk6q2df"]
+
+[ext_resource type="Texture2D" uid="uid://bi3jvsm76rvcp" path="res://asset/empty energy.png" id="1_osdrq"]
+[ext_resource type="Texture2D" uid="uid://de6tgso32xhly" path="res://asset/energy-card-icon.png" id="2_mf4d1"]
+
+[node name="Energy" type="Control"]
+custom_minimum_size = Vector2(73, 48)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 52.0
+texture = ExtResource("1_osdrq")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 52.0
+texture = ExtResource("2_mf4d1")
+expand_mode = 3

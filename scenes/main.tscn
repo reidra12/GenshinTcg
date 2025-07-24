@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3wvru6w4ple8"]
+
+[ext_resource type="Texture2D" uid="uid://vhwoa2ymv8l4" path="res://asset/Fontaine_Card_Boxs.png" id="1_crcgh"]
+[ext_resource type="PackedScene" uid="uid://cxnsgsju46w8m" path="res://scenes/card2.tscn" id="2_qkvtv"]
+[ext_resource type="PackedScene" uid="uid://cfj8x0w6k32pb" path="res://scenes/card.tscn" id="3_cll0r"]
+
+[node name="main" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("3_cll0r")]
+offset_left = 600.0
+offset_top = 228.0
+offset_right = 600.0
+offset_bottom = 228.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(526, 308)
+scale = Vector2(1.743, 1.57)
+texture = ExtResource("1_crcgh")
+
+[node name="Card2" parent="." instance=ExtResource("2_qkvtv")]
+position = Vector2(415, 397)
+scale = Vector2(0.3, 0.3)

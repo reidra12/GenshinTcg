@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://d033oyjgjniu5"]
+
+[ext_resource type="Script" path="res://scripts/deck_builder.gd" id="1_5m47k"]
+[ext_resource type="Texture2D" uid="uid://dex2uw7o32pbk" path="res://asset/building-a-deck-genshin-impact-genius-invokation-tcg.png" id="1_pk27v"]
+[ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_nclo7"]
+
+[node name="DeckBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5m47k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 321.5)
+scale = Vector2(0.597, 0.82125)
+texture = ExtResource("1_pk27v")
+
+[node name="CardLibrary" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 355.0
+offset_right = 1058.0
+offset_bottom = 580.0
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 585.0
+offset_right = 445.0
+offset_bottom = 637.0
+theme_override_fonts/font = ExtResource("3_nclo7")
+theme_override_font_sizes/font_size = 31
+text = "save"
+
+[node name="Load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 588.0
+offset_right = 866.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("3_nclo7")
+theme_override_font_sizes/font_size = 31
+text = "load"
+
+[node name="DeckList" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 27.0
+offset_right = 1088.0
+offset_bottom = 229.0
+
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]

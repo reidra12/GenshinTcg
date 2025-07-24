@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://bt2untt73syi5"]
+
+[ext_resource type="Texture2D" uid="uid://dlpja2pqp35ja" path="res://asset/cards/Action Cards/Chef Mao.png" id="1_4pe61"]
+[ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="2_0xx62"]
+[ext_resource type="Script" path="res://scripts/CardData.gd" id="3_a80wl"]
+
+[resource]
+script = ExtResource("3_a80wl")
+card_name = "Chef Mao"
+description = ""
+health = 0
+card_type = "ActionCard"
+artwork = ExtResource("1_4pe61")
+card_cost = 2
+cost_logo = ExtResource("2_0xx62")

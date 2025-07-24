@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://c7f8idltvef7r"]
+
+[ext_resource type="Texture2D" uid="uid://dcu5bnffbyofb" path="res://asset/cards/Character Cards/Abyss Herald - Wicked Torrents - Copy (2).png" id="1_41d8s"]
+[ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_2oedv"]
+[ext_resource type="Script" path="res://scripts/CardData.gd" id="2_ieolm"]
+
+[resource]
+script = ExtResource("2_ieolm")
+card_name = "Abyss Herald"
+description = ""
+health = 10
+health_logo = ExtResource("2_2oedv")
+card_type = "CharacterCard"
+artwork = ExtResource("1_41d8s")
+card_cost = 0
