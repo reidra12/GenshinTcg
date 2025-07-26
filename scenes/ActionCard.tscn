@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwir86yvkb58k"]
+[gd_scene load_steps=5 format=3 uid="uid://dwir86yvkb58k"]
 
 [ext_resource type="Script" path="res://scripts/ActionCard.gd" id="1_p3vlk"]
 [ext_resource type="Resource" uid="uid://bt2untt73syi5" path="res://Data/ChefMao.tres" id="2_o53a7"]
-[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="3_yct82"]
 [ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="7_uw4ys"]
 [ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="8_f1hae"]
 
@@ -10,9 +9,10 @@
 custom_minimum_size = Vector2(85, 167)
 layout_mode = 3
 anchors_preset = 0
-offset_top = -1.0
-offset_right = 89.0
-offset_bottom = 166.0
+offset_left = 533.0
+offset_top = 234.0
+offset_right = 622.0
+offset_bottom = 401.0
 script = ExtResource("1_p3vlk")
 card_data = ExtResource("2_o53a7")
 
@@ -30,7 +30,12 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
-texture = ExtResource("3_yct82")
+expand_mode = 3
+
+[node name="CardFrame" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 145.0
 expand_mode = 3
 
 [node name="Cost" type="Control" parent="Control"]

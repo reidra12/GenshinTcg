@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5xpkd0q46mhg"]
+
+[ext_resource type="Script" path="res://scripts/DeckList.gd" id="1_eipmx"]
+[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="2_a6mj5"]
+
+[node name="DeckList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eipmx")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 0
+offset_left = -38.0
+offset_top = -29.0
+offset_right = 1183.0
+offset_bottom = 681.0
+color = Color(0.394353, 0.394353, 0.394353, 1)
+
+[node name="DeckContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 654.0
+columns = 8
+
+[node name="IndividualDeck" type="BoxContainer" parent="DeckContainer"]
+custom_minimum_size = Vector2(88, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="DeckContainer/IndividualDeck"]
+layout_mode = 2
+texture = ExtResource("2_a6mj5")
+expand_mode = 3
