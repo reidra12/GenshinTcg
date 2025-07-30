@@ -2,6 +2,7 @@ extends Control
 
 const CHARACTER_CARD_SCENE = preload("res://scenes/CharacterCard.tscn")
 const ACTION_CARD_SCENE = preload("res://scenes/ActionCard.tscn")
+const DECK_LIST_SCENE = preload("res://scenes/deck_list.tscn")
 
 @onready var card_library = $ScrollContainer/CardLibrary
 @onready var deck_list = $HScrollBar/DeckList
@@ -88,7 +89,9 @@ func _on_save_pressed():
 	
 
 func _on_load_pressed():
-	load_deck.popup_centered()
+	var deck_list_scene = DECK_LIST_SCENE.instantiate()
+	deck_list_scene.connect("deck_selected", Callable(self, "_on_deck_selected"))
+	add_child(deck_list_scene)
 
 func _on_load_file_selected(path: String):
 	player_deck = save_manager.load_deck(path)

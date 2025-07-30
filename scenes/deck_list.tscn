@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5xpkd0q46mhg"]
+[gd_scene load_steps=4 format=3 uid="uid://c5xpkd0q46mhg"]
 
 [ext_resource type="Script" path="res://scripts/DeckList.gd" id="1_eipmx"]
-[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="2_a6mj5"]
+[ext_resource type="PackedScene" uid="uid://hpry1wpa105i" path="res://scenes/individual_deck.tscn" id="2_ebxsg"]
+[ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_7wyob"]
 
 [node name="DeckList" type="Control"]
 layout_mode = 3
@@ -27,11 +28,13 @@ offset_right = 1155.0
 offset_bottom = 654.0
 columns = 8
 
-[node name="IndividualDeck" type="BoxContainer" parent="DeckContainer"]
-custom_minimum_size = Vector2(88, 150)
+[node name="IndividualDeck" parent="DeckContainer" instance=ExtResource("2_ebxsg")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="DeckContainer/IndividualDeck"]
-layout_mode = 2
-texture = ExtResource("2_a6mj5")
-expand_mode = 3
+[node name="TextureRect" parent="DeckContainer/IndividualDeck" index="0"]
+custom_minimum_size = Vector2(0, 152)
+
+[node name="DeckName" parent="DeckContainer/IndividualDeck" index="1"]
+theme_override_fonts/font = ExtResource("3_7wyob")
+
+[editable path="DeckContainer/IndividualDeck"]
