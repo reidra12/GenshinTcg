@@ -2,6 +2,7 @@ extends Resource
 class_name CardData
 
 @export var card_name: String
+@export var deck_name: String
 @export var description: String
 @export var card_type: String
 @export var health: int

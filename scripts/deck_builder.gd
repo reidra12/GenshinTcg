@@ -93,6 +93,10 @@ func _on_load_pressed():
 	deck_list_scene.connect("deck_selected", Callable(self, "_on_deck_selected"))
 	add_child(deck_list_scene)
 
+func _on_deck_selected(path: String):
+	player_deck = save_manager.load_deck(path)
+	update_deck_list()
+
 func _on_load_file_selected(path: String):
 	player_deck = save_manager.load_deck(path)
 	update_deck_list()

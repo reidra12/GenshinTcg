@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwir86yvkb58k"]
+[gd_scene load_steps=6 format=3 uid="uid://dwir86yvkb58k"]
 
 [ext_resource type="Script" path="res://scripts/ActionCard.gd" id="1_p3vlk"]
 [ext_resource type="Resource" uid="uid://bt2untt73syi5" path="res://Data/ChefMao.tres" id="2_o53a7"]
+[ext_resource type="Texture2D" uid="uid://d82tlytsm30u" path="res://asset/cards/Event Cards/Teyvat Fried Egg.png" id="3_2h5uf"]
 [ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="7_uw4ys"]
 [ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="8_f1hae"]
 
@@ -30,6 +31,7 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
+texture = ExtResource("3_2h5uf")
 expand_mode = 3
 
 [node name="CardFrame" type="TextureRect" parent="Control"]
@@ -45,10 +47,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -0.999982
-offset_top = 4.0
-offset_right = 39.0
-offset_bottom = 44.0
+offset_left = -5.0
+offset_top = -0.999982
+offset_right = 35.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.394064, 0.382949)

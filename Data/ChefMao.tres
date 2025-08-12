@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("3_a80wl")
 card_name = "Chef Mao"
+deck_name = ""
 description = ""
 card_type = "ActionCard"
 health = 0

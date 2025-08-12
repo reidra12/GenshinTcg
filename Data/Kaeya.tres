@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://boiasxidgml5j"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://boiasxidgml5j"]
 
 [ext_resource type="Texture2D" uid="uid://bvdlgltlau5rk" path="res://asset/cards/Character Cards/Kaeya.png" id="1_nb8f7"]
+[ext_resource type="Texture2D" uid="uid://bddgx12lckxb2" path="res://asset/cards/Card Frames/Gcg_CardFrame_Normal.png" id="2_87fku"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_530u6"]
 [ext_resource type="Script" path="res://scripts/CardData.gd" id="3_wi72i"]
 
 [resource]
 script = ExtResource("3_wi72i")
 card_name = "Kaeya"
+deck_name = ""
 description = ""
-health = 3
-health_logo = ExtResource("2_530u6")
 card_type = "CharacterCard"
-artwork = ExtResource("1_nb8f7")
+health = 3
 card_cost = 0
+health_logo = ExtResource("2_530u6")
+card_frame = ExtResource("2_87fku")
+artwork = ExtResource("1_nb8f7")

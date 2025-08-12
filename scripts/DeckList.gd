@@ -28,8 +28,8 @@ func create_deck_entry(file_name: String, path: String):
 	var deck_ui = deck_scene.instantiate()
 	var deck_name = file_name.replace(".json", "")
 
-	# Set deck name into DeckName label
-	var deck_name_label = deck_ui.get_node("DeckName")
+	var deck_name_label = deck_ui.get_node("DeckContainer/DeckName")
+
 	if deck_name_label:
 		deck_name_label.text = deck_name
 	else:
@@ -37,9 +37,8 @@ func create_deck_entry(file_name: String, path: String):
 
 	deck_container.add_child(deck_ui)
 
-	# Handle click to emit signal
 	deck_ui.connect("gui_input", func(event):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("deck_selected", path)
-			queue_free()
+			queue_free() # remove DeckList scene after selecting
 	)

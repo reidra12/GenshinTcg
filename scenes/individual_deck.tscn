@@ -1,14 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://hpry1wpa105i"]
+[gd_scene load_steps=3 format=3 uid="uid://hpry1wpa105i"]
 
-[ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="1_q0a55"]
+[ext_resource type="Script" path="res://scripts/individual_deck.gd" id="1_ge70d"]
+[ext_resource type="Texture2D" uid="uid://bqk8e2ikxhpyj" path="res://asset/cards/Region Cards/Inazuma.png" id="2_6g5na"]
 
-[node name="IndividualDeck" type="VBoxContainer"]
-custom_minimum_size = Vector2(88, 150)
+[node name="IndividualDeck" type="Control"]
+custom_minimum_size = Vector2(88, 178)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ge70d")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="DeckContainer" type="VBoxContainer" parent="."]
+offset_right = 88.0
+offset_bottom = 27.0
+
+[node name="DeckImg" type="TextureRect" parent="DeckContainer"]
+custom_minimum_size = Vector2(0, 151)
 layout_mode = 2
-texture = ExtResource("1_q0a55")
+size_flags_vertical = 3
+texture = ExtResource("2_6g5na")
 expand_mode = 3
 
-[node name="DeckName" type="Label" parent="."]
+[node name="DeckName" type="Label" parent="DeckContainer"]
 layout_mode = 2
+horizontal_alignment = 1

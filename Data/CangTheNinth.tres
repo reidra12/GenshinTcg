@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://ii1shpv3n0db"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://ii1shpv3n0db"]
 
 [ext_resource type="Texture2D" uid="uid://cbgx1mrlnxxnc" path="res://asset/cards/Action Cards/Chang the Ninth.png" id="1_nfld5"]
 [ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="2_77f0m"]
 [ext_resource type="Script" path="res://scripts/CardData.gd" id="2_r80qg"]
+[ext_resource type="Texture2D" uid="uid://bddgx12lckxb2" path="res://asset/cards/Card Frames/Gcg_CardFrame_Normal.png" id="2_rugk2"]
 
 [resource]
 script = ExtResource("2_r80qg")
 card_name = "Chang The Ninth"
+deck_name = ""
 description = ""
-health = 0
 card_type = "ActionCard"
-artwork = ExtResource("1_nfld5")
+health = 0
 card_cost = 0
 cost_logo = ExtResource("2_77f0m")
+card_frame = ExtResource("2_rugk2")
+artwork = ExtResource("1_nfld5")
