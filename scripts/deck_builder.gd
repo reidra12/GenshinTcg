@@ -104,5 +104,3 @@ func _on_load_file_selected(path: String):
 func ensure_save_dir():
 	if not DirAccess.dir_exists_absolute("user://Save"):
 		DirAccess.make_dir_absolute("user://Save")
-
-

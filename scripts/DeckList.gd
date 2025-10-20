@@ -10,16 +10,38 @@ func _ready():
 	show_all_decks()
 
 func show_all_decks():
-	var dir = DirAccess.open("user://Save")
-	if dir == null:
-		push_error("Could not open save directory.")
-		return
+	var save_dir := "user://Save"
+	for child in deck_container.get_children():
+		child.queue_free()
 
+    # Try to open save_dir; if it doesn't exist, create it using a DirAccess instance
+	var dir := DirAccess.open(save_dir)
+	if dir == null:
+		var root := DirAccess.open("user://")
+		if root == null:
+			push_error("Could not open user://")
+			return
+		if not root.dir_exists("Save"):
+			var err := root.make_dir("Save")
+			if err != OK and err != ERR_ALREADY_EXISTS:
+				push_error("Failed to create save directory: %s" % save_dir)
+				return
+		dir = DirAccess.open(save_dir)
+		if dir == null:
+			push_error("Could not open save directory after creating it: %s" % save_dir)
+			return
+	
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name := dir.get_next()
 	while file_name != "":
-		if file_name.ends_with(".json"):
-			var full_path = "user://Save/" + file_name
+        # skip directories
+		if dir.current_is_dir():
+			file_name = dir.get_next()
+			continue
+
+        # check extension case-insensitively
+		if file_name.get_extension().to_lower() == "json":
+			var full_path := save_dir + "/" + file_name
 			create_deck_entry(file_name, full_path)
 		file_name = dir.get_next()
 	dir.list_dir_end()
@@ -37,8 +59,7 @@ func create_deck_entry(file_name: String, path: String):
 
 	deck_container.add_child(deck_ui)
 
-	deck_ui.connect("gui_input", func(event):
+	deck_ui.connect("gui_input", func input_mouse(event):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("deck_selected", path)
-			queue_free() # remove DeckList scene after selecting
-	)
+			queue_free() )

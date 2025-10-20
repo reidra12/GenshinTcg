@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("3_6qli3")
-card_name = "AvyssalSummon"
+card_name = "AbyssalSummon"
 deck_name = ""
 description = ""
 card_type = "ActionCard"

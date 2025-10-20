@@ -10,6 +10,7 @@ anchors_preset = 0
 script = ExtResource("1_ge70d")
 
 [node name="DeckContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 88.0
 offset_bottom = 27.0
 
