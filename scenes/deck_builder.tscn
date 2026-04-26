@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://d033oyjgjniu5"]
+[gd_scene format=3 uid="uid://d033oyjgjniu5"]
 
-[ext_resource type="Script" path="res://scripts/deck_builder.gd" id="1_5m47k"]
+[ext_resource type="Script" uid="uid://ekvwnvdn5uld" path="res://scripts/deck_builder.gd" id="1_5m47k"]
 [ext_resource type="Texture2D" uid="uid://dex2uw7o32pbk" path="res://asset/building-a-deck-genshin-impact-genius-invokation-tcg.png" id="1_pk27v"]
 [ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="3_nclo7"]
 
-[node name="DeckBuilder" type="Control"]
+[node name="DeckBuilder" type="Control" unique_id=914575577]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5m47k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1797612014]
 position = Vector2(577, 321.5)
 scale = Vector2(0.597, 0.82125)
 texture = ExtResource("1_pk27v")
 
-[node name="Save" type="Button" parent="."]
+[node name="Save" type="Button" parent="." unique_id=702924106]
 layout_mode = 0
 offset_left = 275.0
 offset_top = 585.0
@@ -24,7 +24,7 @@ theme_override_fonts/font = ExtResource("3_nclo7")
 theme_override_font_sizes/font_size = 31
 text = "save"
 
-[node name="Load" type="Button" parent="."]
+[node name="Load" type="Button" parent="." unique_id=234983151]
 layout_mode = 0
 offset_left = 696.0
 offset_top = 588.0
@@ -34,43 +34,43 @@ theme_override_fonts/font = ExtResource("3_nclo7")
 theme_override_font_sizes/font_size = 31
 text = "load"
 
-[node name="HScrollBar" type="ScrollContainer" parent="."]
-layout_mode = 2
+[node name="HScrollBar" type="ScrollContainer" parent="." unique_id=56887037]
+layout_mode = 0
 offset_left = 66.0
 offset_top = 25.0
 offset_right = 1088.0
 offset_bottom = 234.0
 vertical_scroll_mode = 0
 
-[node name="DeckList" type="HBoxContainer" parent="HScrollBar"]
+[node name="DeckList" type="HBoxContainer" parent="HScrollBar" unique_id=316006366]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SaveDeckName" type="LineEdit" parent="."]
+[node name="SaveDeckName" type="LineEdit" parent="." unique_id=1893952870]
 layout_mode = 0
 offset_left = 457.0
 offset_top = 286.0
 offset_right = 702.0
 offset_bottom = 333.0
 
-[node name="LoadDeck" type="FileDialog" parent="."]
+[node name="LoadDeck" type="FileDialog" parent="." unique_id=493874457]
 title = "Open a File"
-size = Vector2i(392, 159)
+size = Vector2i(600, 301)
 ok_button_text = "Open"
 file_mode = 0
-access = 1
+access = 2
 filters = PackedStringArray(".json", ".json", ".json")
 show_hidden_files = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 2
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=24555514]
+layout_mode = 0
 offset_left = 77.0
 offset_top = 352.0
 offset_right = 1083.0
 offset_bottom = 571.0
 
-[node name="CardLibrary" type="HBoxContainer" parent="ScrollContainer"]
+[node name="CardLibrary" type="HBoxContainer" parent="ScrollContainer" unique_id=621735158]
 layout_mode = 2
 
 [connection signal="pressed" from="Save" to="." method="_on_save_pressed"]

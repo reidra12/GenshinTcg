@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://j51hq801ld3m"]
+[gd_scene format=3 uid="uid://j51hq801ld3m"]
 
-[ext_resource type="Script" path="res://scripts/card.gd" id="1_er0mv"]
+[ext_resource type="Script" uid="uid://c3b7x20hudj0r" path="res://scripts/card.gd" id="1_er0mv"]
 [ext_resource type="Resource" uid="uid://boiasxidgml5j" path="res://Data/Kaeya.tres" id="2_d3f42"]
-[ext_resource type="Script" path="res://scripts/Energy.gd" id="4_y5eim"]
+[ext_resource type="Script" uid="uid://bacsjnms2le2q" path="res://scripts/Energy.gd" id="4_y5eim"]
 [ext_resource type="Texture2D" uid="uid://bi3jvsm76rvcp" path="res://asset/empty energy.png" id="5_ii454"]
 [ext_resource type="Texture2D" uid="uid://de6tgso32xhly" path="res://asset/energy-card-icon.png" id="6_ebaav"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="7_ww4wy"]
 [ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="8_d5k0p"]
 
-[node name="CharacterCard" type="Control"]
+[node name="CharacterCard" type="Control" unique_id=1500348347]
 custom_minimum_size = Vector2(85, 167)
 layout_mode = 3
 anchors_preset = 0
@@ -19,8 +19,7 @@ offset_bottom = 371.0
 script = ExtResource("1_er0mv")
 card_data = ExtResource("2_d3f42")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="Control" type="Control" parent="." unique_id=172319810]
 anchors_preset = 0
 offset_left = 3.0
 offset_top = 6.0
@@ -28,21 +27,21 @@ offset_right = 7.0
 offset_bottom = 6.0
 rotation = 6.28319
 
-[node name="CardImg" type="TextureRect" parent="Control"]
+[node name="CardImg" type="TextureRect" parent="Control" unique_id=408922251]
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
 expand_mode = 3
 
-[node name="CardFrame" type="TextureRect" parent="Control"]
+[node name="CardFrame" type="TextureRect" parent="Control" unique_id=892128385]
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
 expand_mode = 3
 
-[node name="EnergyContainer" type="VBoxContainer" parent="Control"]
+[node name="EnergyContainer" type="VBoxContainer" parent="Control" unique_id=1332948658]
 layout_mode = 0
 offset_left = 74.0
 offset_top = 20.0
@@ -50,24 +49,24 @@ offset_right = 202.0
 offset_bottom = 420.0
 scale = Vector2(0.11, 0.11)
 
-[node name="Energy" type="Control" parent="Control/EnergyContainer"]
+[node name="Energy" type="Control" parent="Control/EnergyContainer" unique_id=648900214]
 custom_minimum_size = Vector2(81, 126)
 layout_mode = 2
 script = ExtResource("4_y5eim")
 
-[node name="EmptyEnergy" type="TextureRect" parent="Control/EnergyContainer/Energy"]
+[node name="EmptyEnergy" type="TextureRect" parent="Control/EnergyContainer/Energy" unique_id=1585915164]
 layout_mode = 1
 offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("5_ii454")
 
-[node name="FullEnergy" type="TextureRect" parent="Control/EnergyContainer/Energy"]
+[node name="FullEnergy" type="TextureRect" parent="Control/EnergyContainer/Energy" unique_id=1055101563]
 layout_mode = 1
 offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("6_ebaav")
 
-[node name="Health" type="Control" parent="Control"]
+[node name="Health" type="Control" parent="Control" unique_id=1820210748]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,7 +83,7 @@ scale = Vector2(0.394064, 0.382949)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Health"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Health" unique_id=1010091981]
 layout_mode = 0
 offset_left = -13.0
 offset_top = -21.0
@@ -93,13 +92,13 @@ offset_bottom = 151.0
 scale = Vector2(0.4, 0.4)
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/Health/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/Health/HBoxContainer" unique_id=1099510594]
 layout_mode = 2
 texture = ExtResource("7_ww4wy")
 
-[node name="HealthText" type="Label" parent="Control/Health"]
+[node name="HealthText" type="Label" parent="Control/Health" unique_id=303222042]
 texture_filter = 2
-layout_mode = 2
+layout_mode = 0
 offset_left = 2.53766
 offset_top = -5.22261
 offset_right = 28.5377

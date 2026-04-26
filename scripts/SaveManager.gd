@@ -14,7 +14,7 @@ func load_all_cards():
 				else:
 					push_warning("Failed to load card: " + file_name)
 
-func save_deck(deck: Deck, file_path: String):
+func save_deck(deck: DeckManager, file_path: String):
 	var dir_path = file_path.get_base_dir()
 	if not DirAccess.dir_exists_absolute(dir_path):
 		DirAccess.make_dir_recursive_absolute(dir_path)
@@ -30,15 +30,15 @@ func save_deck(deck: Deck, file_path: String):
 	print("Deck saved to:", file_path)
 
 
-func load_deck(file_path: String) -> Deck:
+func load_deck(file_path: String) -> DeckManager:
 	var file := FileAccess.open(file_path, FileAccess.READ)
 	if FileAccess.get_open_error() != OK:
 		push_error("Failed to open deck file.")
-		return Deck.new()
+		return DeckManager.new()
 
 	var content = file.get_as_text()
 	var result = JSON.parse_string(content)
-	var deck = Deck.new()
+	var deck = DeckManager.new()
 
 	if result is Array:
 		for card_name in result:

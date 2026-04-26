@@ -1,12 +1,12 @@
 extends Node
-class_name Deck
+class_name DeckManager
 
 var cards: Array[CardData] = []
 
 func add_card(card: CardData, max_copies := 3) -> bool:
 	var count = 0
-	for c in cards:
-		if c.resource_path == card.resource_path:
+	for card_count in cards:
+		if card_count.resource_path == card.resource_path:
 			count += 1
 	if count >= max_copies:
 		return false

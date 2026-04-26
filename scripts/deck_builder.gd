@@ -11,8 +11,8 @@ const ACTION_CARD_SCENE = preload("res://scenes/ActionCard.tscn")
 
 
 var available_cards: Array[CardData] = []
-var player_deck = Deck.new()
-var player_deck2 = Deck.new()
+var player_deck = DeckManager.new()
+var player_deck2 = DeckManager.new()
 var max_card = 3
 
 func _ready():
@@ -23,7 +23,7 @@ func _ready():
 	load_deck.filters = PackedStringArray(["*.json"])
 	load_deck.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	load_deck.access = FileDialog.ACCESS_USERDATA
-	load_deck.current_dir = "user://Save"
+	load_deck.current_dir = "user://SaveDeck"
 	load_deck.connect("file_selected", _on_load_file_selected)
 
 
@@ -80,11 +80,9 @@ func _on_save_pressed():
 	if save_name == "":
 		push_warning("Save name cannot be empty!")
 		return
-	var path = "user://Save/" + save_name + ".json"
-	var path_2 = "res://Save/" + save_name + ".json"
+	var path = "user://SaveDeck/" + save_name + ".json"
 	print("Saving deck to:", path)
 	save_manager.save_deck(player_deck, path)
-	save_manager.save_deck(player_deck, path_2)
 	
 
 func _on_load_pressed():
@@ -95,7 +93,5 @@ func _on_load_file_selected(path: String):
 	update_deck_list()
 
 func ensure_save_dir():
-	if not DirAccess.dir_exists_absolute("user://Save"):
-		DirAccess.make_dir_absolute("user://Save")
-
-
+	if not DirAccess.dir_exists_absolute("user://SaveDeck"):
+		DirAccess.make_dir_absolute("user://SaveDeck")

@@ -10,4 +10,3 @@ func _ready():
 		$Control/Health/HBoxContainer/TextureRect.texture = card_data.health_logo
 		
 		
-		
