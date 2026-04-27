@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://lmcatmp2oxp2"]
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://lmcatmp2oxp2"]
 
 [ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="1_ktjjk"]
+[ext_resource type="Script" uid="uid://grvrgs556frw" path="res://scripts/card_effects/draw_effects.gd" id="2_hfah5"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_nq77x"]
-[ext_resource type="Script" path="res://scripts/CardData.gd" id="3_0ydc7"]
+[ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="3_0ydc7"]
 
 [resource]
 script = ExtResource("3_0ydc7")
 card_name = "Amber"
-description = ""
-health = 2
-health_logo = ExtResource("2_nq77x")
 card_type = "CharacterCard"
+health = 2
+effects = ExtResource("2_hfah5")
+health_logo = ExtResource("2_nq77x")
 artwork = ExtResource("1_ktjjk")
-card_cost = 0

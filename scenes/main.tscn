@@ -39,5 +39,13 @@ offset_right = 470.0
 offset_bottom = 223.0
 text = "discard"
 
+[node name="apply_effects" type="Button" parent="." unique_id=735179472]
+offset_left = 497.0
+offset_top = 171.0
+offset_right = 600.0
+offset_bottom = 223.0
+text = "apply effects"
+
 [connection signal="pressed" from="Draw" to="BattleManager" method="_on_draw_pressed"]
 [connection signal="pressed" from="Discard" to="BattleManager" method="_on_discard_pressed"]
+[connection signal="pressed" from="apply_effects" to="BattleManager" method="_on_apply_effects_pressed"]

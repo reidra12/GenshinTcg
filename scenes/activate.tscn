@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bjtjcubftmo6p"]
+
+[node name="Activate" type="Button" unique_id=1403766956]
+offset_right = 124.0
+offset_bottom = 45.0
+text = "Activate"

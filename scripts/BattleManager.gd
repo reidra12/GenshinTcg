@@ -41,18 +41,8 @@ func draw_card(count : int):
 		# 2. Buat visual kartunya di layar
 		var card_visual = CHAR_CARD_SCENE.instantiate()
 		card_visual.card_data = card_data
+		card_visual.card_played.connect(_on_card_played)
 		hand_container.add_child(card_visual)
-
-func play_card(_card_node: Node, card_data: CardData):
-	# Menggunakan card_data.card_name (pastikan sesuai variabel di CardData.gd kamu)
-	print("Playing card: ", card_data.card_name) 
-	
-	hand_pile.erase(card_data)
-	discard_pile.append(card_data)
-	
-	# Hanya hapus SATU kartu visual ini, bukan hand_container
-	if is_instance_valid(_card_node):
-		_card_node.queue_free()
 	
 func discard_card(_card_node: Node, card_data: CardData):
 	print("Discarding card: ", card_data.card_name)
@@ -88,3 +78,20 @@ func _on_discard_pressed() -> void:
 		
 		# Eksekusi pembuangan
 		discard_card(visual_node_to_remove, card_data)
+
+func play_card_effects(card_node: Node, card_data: CardData):
+	print("Applying effects of card: ", card_data.card_name)
+	if card_data.effects != null:
+		var effects_instance = card_data.effects.new()
+		if effects_instance.has_method("apply_effects"):
+			effects_instance.apply_effects(self)
+		else:
+			push_error("Effects class does not have apply_effects method.")
+	
+	hand_pile.erase(card_data)
+	discard_pile.append(card_data)
+	if is_instance_valid(card_node):
+		card_node.queue_free()
+
+func _on_card_played(card_data: CardData, card_node: Node):
+	play_card_effects(card_node, card_data)
