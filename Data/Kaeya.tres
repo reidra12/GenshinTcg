@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bvdlgltlau5rk" path="res://asset/cards/Character Cards/Kaeya.png" id="1_nb8f7"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_530u6"]
 [ext_resource type="Texture2D" uid="uid://c8blspkeibsv4" path="res://asset/cards/Card Frames/Gcg_CardFrame_Gold.png" id="2_mbemj"]
+[ext_resource type="Script" uid="uid://boq2438btv86f" path="res://scripts/card_effects/discard_effects.gd" id="3_v8yvk"]
 [ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="3_wi72i"]
 
 [resource]
@@ -13,3 +14,5 @@ health = 3
 health_logo = ExtResource("2_530u6")
 card_frame = ExtResource("2_mbemj")
 artwork = ExtResource("1_nb8f7")
+effects = ExtResource("3_v8yvk")
+discard_ammount = 1

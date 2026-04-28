@@ -49,9 +49,15 @@ func discard_card(_card_node: Node, card_data: CardData):
 	hand_pile.erase(card_data)
 	discard_pile.append(card_data)
 	
-	# Hanya hapus SATU kartu visual ini
-	if is_instance_valid(_card_node):
-		_card_node.queue_free()
+	# Remove the card visual from hand
+	var card_visual_to_remove = null
+	for child in hand_container.get_children():
+		if child.get("card_data") == card_data:
+			card_visual_to_remove = child
+			break
+	if is_instance_valid(card_visual_to_remove):
+		card_visual_to_remove.queue_free()
+		hand_container.remove_child(card_visual_to_remove)
 	
 func reshuffle_discard():
 	print("Reshuffling discard pile into deck.")
@@ -84,7 +90,7 @@ func play_card_effects(card_node: Node, card_data: CardData):
 	if card_data.effects != null:
 		var effects_instance = card_data.effects.new()
 		if effects_instance.has_method("apply_effects"):
-			effects_instance.apply_effects(self)
+			effects_instance.apply_effects(self, card_node, card_data)
 		else:
 			push_error("Effects class does not have apply_effects method.")
 	

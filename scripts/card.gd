@@ -20,4 +20,3 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	print("Mouse exited card: ", card_data.card_name if card_data else "No data")
-
