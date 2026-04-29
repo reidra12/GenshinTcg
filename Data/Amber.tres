@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://grvrgs556frw" path="res://scripts/card_effects/draw_effects.gd" id="2_hfah5"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_nq77x"]
 [ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="3_0ydc7"]
+[ext_resource type="Script" uid="uid://boq2438btv86f" path="res://scripts/card_effects/discard_effects.gd" id="3_uyxt4"]
 
 [resource]
 script = ExtResource("3_0ydc7")
@@ -12,5 +13,6 @@ card_type = "CharacterCard"
 health = 2
 health_logo = ExtResource("2_nq77x")
 artwork = ExtResource("1_ktjjk")
-effects = ExtResource("2_hfah5")
-draw_ammount = 1
+effects = Array[Script]([ExtResource("2_hfah5"), ExtResource("3_uyxt4")])
+discard_ammount = 1
+draw_ammount = 2

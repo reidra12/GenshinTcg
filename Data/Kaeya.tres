@@ -14,5 +14,5 @@ health = 3
 health_logo = ExtResource("2_530u6")
 card_frame = ExtResource("2_mbemj")
 artwork = ExtResource("1_nb8f7")
-effects = ExtResource("3_v8yvk")
+effects = Array[Script]([ExtResource("3_v8yvk")])
 discard_ammount = 1

@@ -12,10 +12,13 @@ class_name CardData
 @export var artwork: Texture2D
 
 @export_group("Effects")
-@export var effects: Script
+@export var effects: Array[Script] = []
 @export var discard_ammount: int = 0
+@export var shuffle_ammount: int = 0
 @export var draw_ammount: int = 0
 @export var damage_ammount: int = 0
 @export var heal_ammount: int = 0
-@export var card_to_search: String = ""
+@export var search_ammount: int = 0
 @export var mill_ammount: int = 0
+@export var card_to_mill: String = ""
+@export var card_to_search: String = ""

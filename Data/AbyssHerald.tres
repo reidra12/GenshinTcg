@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6cqn1u5o6t5o" path="res://asset/cards/Character Cards/Abyss Herald - Wicked Torrents.png" id="1_y6760"]
 [ext_resource type="Texture2D" uid="uid://cfdr52rnkiw13" path="res://asset/hp-icon.png" id="2_2oedv"]
 [ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="2_ieolm"]
+[ext_resource type="Script" uid="uid://2qownl6udq1j" path="res://scripts/card_effects/mill_effects.gd" id="2_y3vk2"]
 
 [resource]
 script = ExtResource("2_ieolm")
@@ -11,3 +12,5 @@ card_type = "CharacterCard"
 health = 10
 health_logo = ExtResource("2_2oedv")
 artwork = ExtResource("1_y6760")
+effects = Array[Script]([ExtResource("2_y3vk2")])
+mill_ammount = 1

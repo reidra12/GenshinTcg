@@ -1,9 +1,8 @@
 extends RefCounted
 
-@export var draw_ammount: int = 1
 
-func apply_effects(battle_manager: BattleManager, _card_node: Node, _card_data: CardData) -> void:
-    print("draw_card")
+func apply_effects(battle_manager: BattleManager, _card_node: Node, card_data: CardData) -> void:
+	print("Drawing ", card_data.draw_ammount, " cards")
 
-    for i in range(draw_ammount):
-        battle_manager.draw_card(1)
+	for i in range(card_data.draw_ammount):
+		battle_manager.draw_card(1)

@@ -14,5 +14,3 @@ func _ready():
 func _on_ui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		card_played.emit(card_data, self)
-
-	
