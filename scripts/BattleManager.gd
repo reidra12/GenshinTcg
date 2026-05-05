@@ -11,6 +11,9 @@ var hand_pile : Array[CardData] = []
 var discard_pile : Array[CardData] = []
 
 func _ready() -> void:
+	# 1. DENGARKAN RADIO GLOBAL SIGNALBUS
+	SignalBus.global_card_clicked.connect(_on_global_card_clicked)
+	
 	save_manager.load_all_cards()
 	
 	# Memuat deck
@@ -18,7 +21,7 @@ func _ready() -> void:
 	deck_pile = load_deck.cards
 	deck_pile.shuffle()
 	
-	# Gunakan .size() untuk menampilkan angka jumlah kartu, bukan menampilkan objeknya
+	# Gunakan .size() untuk menampilkan angka jumlah kartu
 	print("Deck loaded with: ", deck_pile.size(), " cards.") 
 	
 	# Langsung panggil draw_card untuk 5 kartu.
@@ -40,7 +43,10 @@ func draw_card(count : int):
 		# 2. Buat visual kartunya di layar
 		var card_visual = CHAR_CARD_SCENE.instantiate()
 		card_visual.card_data = card_data
-		card_visual.card_played.connect(_on_card_played)
+		
+		# KITA TIDAK LAGI MENGHUBUNGKAN SINYAL LOKAL DI SINI
+		# (Karena Card sekarang otomatis berteriak ke SignalBus!)
+		
 		hand_container.add_child(card_visual)
 	
 func discard_card(_card_node: Node, card_data: CardData):
@@ -72,15 +78,12 @@ func _on_discard_pressed() -> void:
 	if hand_pile.size() > 0:
 		var card_data = hand_pile[0]
 		
-		# Cari node visual yang memegang data kartu yang mau dibuang
 		var visual_node_to_remove = null
 		for child in hand_container.get_children():
-			# Cek apakah node visual ini memegang data kartu yang mau kita buang
 			if child.get("card_data") == card_data:
 				visual_node_to_remove = child
-				break # Ketemu, hentikan pencarian
+				break 
 		
-		# Eksekusi pembuangan
 		discard_card(visual_node_to_remove, card_data)
 
 func play_card_effects(card_node: Node, card_data: CardData):
@@ -105,8 +108,19 @@ func play_card_effects(card_node: Node, card_data: CardData):
 	if is_instance_valid(card_node):
 		card_node.queue_free()
 
-func _on_card_played(card_data: CardData, card_node: Node):
-	play_card_effects(card_node, card_data)
+
+# =======================================================
+# 2. FUNGSI BARU UNTUK MERESPONS KLIK GLOBAL
+# =======================================================
+func _on_global_card_clicked(card_node: Node, card_data: CardData) -> void:
+	# Cek apakah kartu yang diklik ini ada di area tangan pertarungan?
+	if card_node.get_parent() == hand_container:
+		print("BattleManager Merespons: Kartu dimainkan dari Tangan!")
+		play_card_effects(card_node, card_data)
+	else:
+		# Jika diklik di luar area tangan (misal di Deck Builder atau List), Abaikan!
+		print("BattleManager Abaikan: Kartu diklik di luar area pertarungan.")
+
 
 func shuffle_card(card_data: CardData):
 	print("Shuffling card back into deck: ", card_data.card_name)
@@ -122,7 +136,6 @@ func shuffle_card(card_data: CardData):
 	if is_instance_valid(card_visual_to_remove):
 		card_visual_to_remove.queue_free()
 		hand_container.remove_child(card_visual_to_remove)
-
 
 func mill_card(card_data: CardData):
 	print("Milling card from deck: ", card_data.card_name)
