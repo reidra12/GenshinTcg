@@ -13,6 +13,7 @@ func _ready():
 
 func _on_ui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("Card played: ", card_data.card_name if card_data else "No data")
 		card_played.emit(card_data, self)
 
 func _on_mouse_entered():

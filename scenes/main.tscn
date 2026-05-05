@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://vhwoa2ymv8l4" path="res://asset/Fontaine_Card_Boxs.png" id="1_crcgh"]
 [ext_resource type="PackedScene" uid="uid://byc2oa4wy6tk4" path="res://scenes/hand.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://ky6o0s3ixeeq" path="res://scripts/BattleManager.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://c0j3chu66dso7" path="res://scenes/deck_pile.tscn" id="4_jyhfs"]
 
 [node name="main" type="Node2D" unique_id=1304966097]
 
@@ -12,14 +13,15 @@ scale = Vector2(1.743, 1.57)
 texture = ExtResource("1_crcgh")
 
 [node name="hand" parent="." unique_id=1590812199 instance=ExtResource("2_0wfyh")]
-offset_left = 469.0
-offset_top = 341.0
-offset_right = 469.0
-offset_bottom = 341.0
+offset_left = 522.0
+offset_top = 486.0
+offset_right = 522.0
+offset_bottom = 486.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 7.06
+mouse_filter = 2
 
 [node name="BattleManager" type="Node" parent="." unique_id=428363542]
 script = ExtResource("3_sugp2")
@@ -45,6 +47,14 @@ offset_top = 171.0
 offset_right = 600.0
 offset_bottom = 223.0
 text = "apply effects"
+
+[node name="deck_pile" parent="." unique_id=691930587 instance=ExtResource("4_jyhfs")]
+anchors_preset = 15
+offset_left = 109.99999
+offset_top = 421.0
+offset_right = 530.0
+offset_bottom = 1162.6393
+scale = Vector2(0.27367026, 0.22517686)
 
 [connection signal="pressed" from="Draw" to="BattleManager" method="_on_draw_pressed"]
 [connection signal="pressed" from="Discard" to="BattleManager" method="_on_discard_pressed"]

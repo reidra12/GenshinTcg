@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c0j3chu66dso7"]
+
+[ext_resource type="Texture2D" uid="uid://bqk8e2ikxhpyj" path="res://asset/cards/Region Cards/Inazuma.png" id="1_7l8t5"]
+[ext_resource type="Script" uid="uid://dtwlw60grflem" path="res://scripts/deck_pile.gd" id="1_h34q7"]
+
+[node name="deck_pile" type="BoxContainer" unique_id=691930587]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -732.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_h34q7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=536587090]
+layout_mode = 2
+texture = ExtResource("1_7l8t5")

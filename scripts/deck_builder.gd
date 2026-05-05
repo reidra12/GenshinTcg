@@ -57,6 +57,7 @@ func update_ui():
 
 		card_instance.get_node("Control").connect("gui_input", func(event):
 			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+				print("add card: ", card.card_name)
 				if player_deck.add_card(card, max_card):
 					update_deck_list()
 				else:
