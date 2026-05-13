@@ -1,13 +1,16 @@
 extends Control
 class_name DeckList
 
+const CHAR_CARD_SCENE = preload("res://scenes/CharacterCard.tscn")
 
 @onready var deck_container: GridContainer = $DeckContainer
 
-
-
 func _ready() -> void:
 	clear_container()
+	
+	# Menyambungkan sinyal dari SignalBus ke fungsi yang ada di bawah
+	SignalBus.card_added_to_deck.connect(_on_card_added_to_deck)
+	SignalBus.card_removed_from_deck.connect(_on_card_removed_from_deck)
 
 func set_deck_data(deck: Array[CardData]) -> void :
 	clear_container()
@@ -19,28 +22,29 @@ func clear_container():
 		child.queue_free()
 
 # Fungsi bantuan untuk membuat UI kartu secara dinamis
-func create_card_visual(card: CardData) -> void:
-	# 1. Membuat node BoxContainer
-	var box = BoxContainer.new()
-	box.custom_minimum_size = Vector2(88, 150) # Sesuai dengan settinganmu
+func create_card_visual(card_data: CardData) -> void:
+	var card_visual = CHAR_CARD_SCENE.instantiate()
+	
+	# Catatan: Pastikan variabel di CharacterCard bernama 'card'.
+	# Jika sebelumnya bernama 'card_data', ubah menjadi card_visual.card_data = card
+	card_visual.card_data = card_data
+	
+	deck_container.add_child(card_visual)
 
-	# 2. Membuat node TextureRect untuk gambarnya
-	var texture_rect = TextureRect.new()
-	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+# =======================================================
+# FUNGSI BARU YANG DITAMBAHKAN UNTUK MEMPERBAIKI ERROR
+# =======================================================
 
-	# --- BAGIAN YANG DIPERBAIKI ---
-	# Karena berada di dalam Container, kita gunakan Size Flags
-	# agar gambar otomatis melar/memenuhi ukuran BoxContainer-nya.
-	texture_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	texture_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	# ------------------------------
+# Fungsi ini akan dipanggil otomatis saat sinyal card_added_to_deck berteriak
+func _on_card_added_to_deck(card_data: CardData) -> void:
+	# Langsung buatkan visual kartunya di layar
+	create_card_visual(card_data)
 
-	# Menentukan gambar kartu
-	if "card_texture" in card and card.get("card_texture") != null:
-		texture_rect.texture = card.card_texture
-	elif "texture" in card and card.get("texture") != null:
-		texture_rect.texture = card.texture
-
-	# 3. Merangkai struktur nodenya
-	box.add_child(texture_rect)         # Masukkan TextureRect ke dalam BoxContainer
-	deck_container.add_child(box)       # Masukkan BoxContainer ke dalam GridContainer
+# Fungsi ini akan dipanggil otomatis saat sinyal card_removed_from_deck berteriak
+func _on_card_removed_from_deck(card_data: CardData) -> void:
+	# Cari kartu yang sesuai di dalam container, lalu hapus dari layar
+	for child in deck_container.get_children():
+		# Kita menggunakan .get() agar aman dari error jika node tidak punya variabel tersebut
+		if child.get("card") == card_data or child.get("card_data") == card_data:
+			child.queue_free()
+			break # Berhenti mencari jika sudah ketemu dan dihapus

@@ -47,13 +47,13 @@ offset_right = 600.0
 offset_bottom = 223.0
 text = "apply effects"
 
-[node name="deck_pile" parent="." unique_id=691930587 instance=ExtResource("4_jyhfs")]
-anchors_preset = 15
-offset_left = 109.99999
-offset_top = 421.0
-offset_right = 530.0
-offset_bottom = 1162.6393
+[node name="deck_pile" parent="." unique_id=691930587 node_paths=PackedStringArray("battle_manager") instance=ExtResource("4_jyhfs")]
+offset_left = 101.99999
+offset_top = 417.99997
+offset_right = 522.0
+offset_bottom = 1159.6393
 scale = Vector2(0.27367026, 0.22517686)
+battle_manager = NodePath("../BattleManager")
 
 [connection signal="pressed" from="Draw" to="BattleManager" method="_on_draw_pressed"]
 [connection signal="pressed" from="Discard" to="BattleManager" method="_on_discard_pressed"]
