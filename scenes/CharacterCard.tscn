@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3b7x20hudj0r" path="res://scripts/card.gd" id="1_er0mv"]
 [ext_resource type="Resource" uid="uid://boiasxidgml5j" path="res://Data/Kaeya.tres" id="2_d3f42"]
+[ext_resource type="Texture2D" uid="uid://cl0umj3w2caf6" path="res://asset/cards/Support Cards/Dunyarzad.png" id="3_qcwub"]
 [ext_resource type="Script" uid="uid://bacsjnms2le2q" path="res://scripts/Energy.gd" id="4_y5eim"]
 [ext_resource type="Texture2D" uid="uid://bi3jvsm76rvcp" path="res://asset/empty energy.png" id="5_ii454"]
 [ext_resource type="Texture2D" uid="uid://de6tgso32xhly" path="res://asset/energy-card-icon.png" id="6_ebaav"]
@@ -12,10 +13,8 @@
 custom_minimum_size = Vector2(85, 167)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 574.0
-offset_top = 204.0
-offset_right = 663.0
-offset_bottom = 371.0
+offset_right = 89.0
+offset_bottom = 167.0
 mouse_filter = 1
 script = ExtResource("1_er0mv")
 card_data = ExtResource("2_d3f42")
@@ -27,14 +26,13 @@ offset_top = 6.0
 offset_right = 7.0
 offset_bottom = 6.0
 rotation = 6.28319
-mouse_filter = 2
 
 [node name="CardImg" type="TextureRect" parent="Control" unique_id=408922251]
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
-mouse_filter = 2
+texture = ExtResource("3_qcwub")
 expand_mode = 3
 
 [node name="CardFrame" type="TextureRect" parent="Control" unique_id=892128385]
@@ -42,7 +40,6 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
-mouse_filter = 2
 expand_mode = 3
 
 [node name="EnergyContainer" type="VBoxContainer" parent="Control" unique_id=1332948658]
@@ -87,7 +84,6 @@ grow_vertical = 2
 scale = Vector2(0.394064, 0.382949)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Health" unique_id=1010091981]
 layout_mode = 0
@@ -118,4 +114,16 @@ theme_override_font_sizes/font_size = 27
 text = "2"
 horizontal_alignment = 1
 
-[connection signal="gui_input" from="." to="." method="_on_ui_input"]
+[node name="ClickDetector" type="Button" parent="." unique_id=1177439402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 6.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="ClickDetector" to="." method="_on_click_detector_pressed"]

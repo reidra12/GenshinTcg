@@ -2,7 +2,6 @@ extends Node
 
 @export var card_data: CardData
 
-signal card_played(card_data: CardData, card_node: Node)
 
 func _ready():
 	if card_data :
@@ -11,6 +10,9 @@ func _ready():
 			$Control/CardFrame.texture = card_data.card_frame
 			$Control/Cost/CostText.text = str(card_data.card_cost)
 
-func _on_ui_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		card_played.emit(card_data, self)
+
+
+func _on_click_detector_pressed() -> void:
+	print("card clicked: ", card_data.card_name)
+	SignalBus.global_card_clicked.emit(self, card_data)
+

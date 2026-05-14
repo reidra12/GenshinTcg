@@ -8,6 +8,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5m47k")
+dir_path = "res://SaveDeck/"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1797612014]
 position = Vector2(577, 321.5)
@@ -59,7 +60,6 @@ title = "Open a File"
 size = Vector2i(600, 301)
 ok_button_text = "Open"
 file_mode = 0
-access = 2
 filters = PackedStringArray(".json", ".json", ".json")
 show_hidden_files = true
 

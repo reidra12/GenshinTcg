@@ -1,5 +1,6 @@
 extends RefCounted
 
+
 func apply_effects(battle_manager: BattleManager, _card_node: Node, card_data: CardData) -> void:
     print("milling card from deck: ", card_data.card_name)
     

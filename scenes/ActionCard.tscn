@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dwir86yvkb58k"]
 
 [ext_resource type="Script" uid="uid://ck8nnqhb7a147" path="res://scripts/ActionCard.gd" id="1_p3vlk"]
-[ext_resource type="Resource" uid="uid://lmcatmp2oxp2" path="res://Data/Amber.tres" id="2_ugrui"]
+[ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="2_ugrui"]
+[ext_resource type="Texture2D" uid="uid://cl0umj3w2caf6" path="res://asset/cards/Support Cards/Dunyarzad.png" id="3_agwf1"]
 [ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="7_uw4ys"]
 [ext_resource type="FontFile" uid="uid://daae2vbx4ng13" path="res://asset/fonts/poppins/Poppins-Black.ttf" id="8_f1hae"]
+
+[sub_resource type="Resource" id="Resource_agwf1"]
+script = ExtResource("2_ugrui")
+metadata/_custom_type_script = "uid://da84lsdpkfuxu"
 
 [node name="ActionCard" type="Control" unique_id=801621412]
 custom_minimum_size = Vector2(85, 167)
@@ -13,8 +18,9 @@ offset_left = 533.0
 offset_top = 234.0
 offset_right = 622.0
 offset_bottom = 401.0
+mouse_filter = 1
 script = ExtResource("1_p3vlk")
-card_data = ExtResource("2_ugrui")
+card_data = SubResource("Resource_agwf1")
 
 [node name="Control" type="Control" parent="." unique_id=744613863]
 anchors_preset = 0
@@ -29,6 +35,7 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 720.0
 scale = Vector2(0.2, 0.201)
+texture = ExtResource("3_agwf1")
 expand_mode = 3
 
 [node name="CardFrame" type="TextureRect" parent="Control" unique_id=376665052]
@@ -76,6 +83,7 @@ offset_top = -5.22265
 offset_right = 31.0753
 offset_bottom = 33.7774
 scale = Vector2(1.156, 1)
+mouse_filter = 0
 theme_override_colors/font_color = Color(0.999598, 0.909521, 0.794696, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
@@ -83,3 +91,13 @@ theme_override_fonts/font = ExtResource("8_f1hae")
 theme_override_font_sizes/font_size = 27
 text = "2"
 horizontal_alignment = 1
+
+[node name="ClickDetector" type="Button" parent="." unique_id=1555956363]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 87.0
+offset_bottom = 151.0
+flat = true
+
+[connection signal="pressed" from="ClickDetector" to="." method="_on_click_detector_pressed"]
