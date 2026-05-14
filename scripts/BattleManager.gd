@@ -3,6 +3,9 @@ class_name BattleManager
 
 @onready var save_manager = SaveManager.new()
 
+@export var load_deck_path : String
+
+
 var deck_pile : Array[CardData] = []
 var hand_pile : Array[CardData] = [] 
 var discard_pile : Array[CardData] = []
@@ -13,7 +16,7 @@ func _ready() -> void:
 	
 	save_manager.load_all_cards()
 	
-	var load_deck = save_manager.load_deck("res://SaveDeck/test_save.json")
+	var load_deck = save_manager.load_deck(load_deck_path)
 	deck_pile = load_deck.cards
 	deck_pile.shuffle()
 	
@@ -23,30 +26,6 @@ func _ready() -> void:
 	
 	draw_card(5) 
 	print("Initial hand size: ", hand_pile.size())
-
-func draw_card(count : int):
-	for i in range(count):
-		if deck_pile.is_empty():
-			reshuffle_discard()
-			if deck_pile.is_empty(): 
-				print("Deck benar-benar habis!")
-				return
-		
-		var card_data = deck_pile.pop_back()
-		hand_pile.append(card_data)
-		
-		SignalBus.card_drawn.emit(card_data)
-		SignalBus.card_removed_from_deck.emit(card_data)
-		SignalBus.deck_updated.emit(deck_pile.size())
-	
-func discard_card(card_data: CardData):
-	print("Discarding card: ", card_data.card_name)
-	hand_pile.erase(card_data)
-	discard_pile.append(card_data)
-	
-	# MENGGUNAKAN SIGNALBUS
-	SignalBus.card_removed_from_hand.emit(card_data)
-	SignalBus.card_added_to_discard.emit(card_data)
 	
 func reshuffle_discard():
 	print("Reshuffling discard pile into deck.")
@@ -109,3 +88,39 @@ func mill_card(card_data: CardData):
 		SignalBus.deck_updated.emit(deck_pile.size())
 	else:
 		print("Card not found in deck to mill: ", card_data.card_name)
+
+func draw_card(count : int):
+	for i in range(count):
+		if deck_pile.is_empty():
+			reshuffle_discard()
+			if deck_pile.is_empty(): 
+				print("Deck benar-benar habis!")
+				return
+		
+		var card_data = deck_pile.pop_back()
+		hand_pile.append(card_data)
+		
+		SignalBus.card_drawn.emit(card_data)
+		SignalBus.card_removed_from_deck.emit(card_data)
+		SignalBus.deck_updated.emit(deck_pile.size())
+	
+func discard_card(card_data: CardData):
+	print("Discarding card: ", card_data.card_name)
+	hand_pile.erase(card_data)
+	discard_pile.append(card_data)
+	
+	# MENGGUNAKAN SIGNALBUS
+	SignalBus.card_removed_from_hand.emit(card_data)
+	SignalBus.card_added_to_discard.emit(card_data)
+
+func search_card(card_data: CardData):
+	print("Searching for card: ", card_data.card_name)
+	if deck_pile.has(card_data):
+		deck_pile.erase(card_data)
+		hand_pile.append(card_data)
+		# MENGGUNAKAN SIGNALBUS
+		SignalBus.card_added_to_hand.emit(card_data)
+		SignalBus.card_removed_from_deck.emit(card_data)
+	else:
+		print("Card not found in deck to search: ", card_data.card_name)
+	deck_pile.shuffle()

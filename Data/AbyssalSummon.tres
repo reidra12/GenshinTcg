@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c4fikar04woq3" path="res://asset/cards/Action Cards/Abyssal Summons.png" id="1_aosl0"]
 [ext_resource type="Texture2D" uid="uid://crv1qwi1udl8" path="res://asset/any-icon.png" id="2_1viac"]
 [ext_resource type="Script" uid="uid://da84lsdpkfuxu" path="res://scripts/CardData.gd" id="3_6qli3"]
+[ext_resource type="Script" uid="uid://b0nq5bhnhh5vi" path="res://scripts/card_effects/search_effects.gd" id="3_ceq45"]
 
 [resource]
 script = ExtResource("3_6qli3")
@@ -10,3 +11,6 @@ card_name = "Abyssal Summon"
 card_type = "ActionCard"
 cost_logo = ExtResource("2_1viac")
 artwork = ExtResource("1_aosl0")
+effects = Array[Script]([ExtResource("3_ceq45")])
+search_ammount = 1
+card_to_search = "Amber"

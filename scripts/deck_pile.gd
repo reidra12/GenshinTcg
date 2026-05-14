@@ -36,3 +36,4 @@ func _on_click_detector_pressed() -> void:
         deck_list_instance = null
     else:
         show_deck_list()
+

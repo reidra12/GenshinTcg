@@ -5,9 +5,10 @@ const CHAR_CARD_SCENE = preload("res://scenes/CharacterCard.tscn")
 
 @onready var deck_container: GridContainer = $DeckContainer
 
+var is_search_mode : bool = false
+
 func _ready() -> void:
 	clear_container()
-	
 	# Menyambungkan sinyal dari SignalBus ke fungsi yang ada di bawah
 	SignalBus.card_added_to_deck.connect(_on_card_added_to_deck)
 	SignalBus.card_removed_from_deck.connect(_on_card_removed_from_deck)
@@ -48,3 +49,7 @@ func _on_card_removed_from_deck(card_data: CardData) -> void:
 		if child.get("card") == card_data or child.get("card_data") == card_data:
 			child.queue_free()
 			break # Berhenti mencari jika sudah ketemu dan dihapus
+
+
+func _on_close_pressed() -> void:
+	queue_free()

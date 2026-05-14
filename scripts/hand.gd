@@ -7,6 +7,8 @@ func _ready() -> void:
     # Langsung sambungkan ke SignalBus secara global!
     SignalBus.card_drawn.connect(_on_card_drawn)
     SignalBus.card_removed_from_hand.connect(_on_card_removed)
+    SignalBus.card_added_to_hand.connect(_on_card_drawn)
+
 
 # ==========================================
 # FUNGSI RESPONS VISUAL

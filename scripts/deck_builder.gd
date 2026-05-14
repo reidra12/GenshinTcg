@@ -3,11 +3,15 @@ extends Control
 const CHARACTER_CARD_SCENE = preload("res://scenes/CharacterCard.tscn")
 const ACTION_CARD_SCENE = preload("res://scenes/ActionCard.tscn")
 
+
+
 @onready var card_library = $ScrollContainer/CardLibrary
 @onready var deck_list = $HScrollBar/DeckList
 @onready var save_manager = preload("res://scripts/SaveManager.gd").new()
 @onready var save_deck_name = $SaveDeckName
 @onready var load_deck = $LoadDeck
+
+@export var dir_path = "user://SaveDeck"
 
 var available_cards: Array[CardData] = []
 var player_deck = DeckManager.new()
@@ -26,7 +30,7 @@ func _ready():
 	load_deck.filters = PackedStringArray(["*.json"])
 	load_deck.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	load_deck.access = FileDialog.ACCESS_USERDATA
-	load_deck.current_dir = "user://SaveDeck"
+	load_deck.current_dir = dir_path
 	load_deck.connect("file_selected", _on_load_file_selected)
 
 func load_card_library():
@@ -102,6 +106,8 @@ func _on_save_pressed():
 	
 func _on_load_pressed():
 	load_deck.popup_centered()
+	load_deck.current_dir = dir_path
+
 
 func _on_load_file_selected(path: String):
 	player_deck = save_manager.load_deck(path)

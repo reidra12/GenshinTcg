@@ -24,6 +24,7 @@ size_flags_stretch_ratio = 7.06
 
 [node name="BattleManager" type="Node" parent="." unique_id=428363542]
 script = ExtResource("3_sugp2")
+load_deck_path = "res://SaveDeck/test_save.json"
 metadata/_custom_type_script = "uid://ky6o0s3ixeeq"
 
 [node name="Draw" type="Button" parent="." unique_id=1822456815]

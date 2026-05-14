@@ -11,13 +11,6 @@ func _ready():
 		$Control/Health/HBoxContainer/TextureRect.texture = card_data.health_logo
 	
 
-func _on_mouse_entered():
-	print("Mouse entered card: ", card_data.card_name if card_data else "No data")
-
-func _on_mouse_exited():
-	print("Mouse exited card: ", card_data.card_name if card_data else "No data")
-
-
 func _on_click_detector_pressed() -> void:
 	print("Card played: ", card_data.card_name if card_data else "No data")
 	SignalBus.global_card_clicked.emit(self, card_data)
