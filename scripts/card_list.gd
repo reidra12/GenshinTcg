@@ -1,5 +1,5 @@
 extends Control
-class_name DeckList
+class_name CardList
 
 const CHAR_CARD_SCENE = preload("res://scenes/CharacterCard.tscn")
 
@@ -12,6 +12,9 @@ func _ready() -> void:
 	# Menyambungkan sinyal dari SignalBus ke fungsi yang ada di bawah
 	SignalBus.card_added_to_deck.connect(_on_card_added_to_deck)
 	SignalBus.card_removed_from_deck.connect(_on_card_removed_from_deck)
+	SignalBus.card_added_to_discard.connect(_on_card_added_to_discard)
+	SignalBus.card_removed_from_discard.connect(_on_card_removed_from_discard)
+
 
 func set_deck_data(deck: Array[CardData]) -> void :
 	clear_container()
@@ -41,8 +44,20 @@ func _on_card_added_to_deck(card_data: CardData) -> void:
 	# Langsung buatkan visual kartunya di layar
 	create_card_visual(card_data)
 
+func _on_card_added_to_discard(card_data: CardData) -> void:
+	create_card_visual(card_data)
+
+
 # Fungsi ini akan dipanggil otomatis saat sinyal card_removed_from_deck berteriak
 func _on_card_removed_from_deck(card_data: CardData) -> void:
+	# Cari kartu yang sesuai di dalam container, lalu hapus dari layar
+	for child in deck_container.get_children():
+		# Kita menggunakan .get() agar aman dari error jika node tidak punya variabel tersebut
+		if child.get("card") == card_data or child.get("card_data") == card_data:
+			child.queue_free()
+			break # Berhenti mencari jika sudah ketemu dan dihapus
+
+func _on_card_removed_from_discard(card_data: CardData) -> void:
 	# Cari kartu yang sesuai di dalam container, lalu hapus dari layar
 	for child in deck_container.get_children():
 		# Kita menggunakan .get() agar aman dari error jika node tidak punya variabel tersebut
