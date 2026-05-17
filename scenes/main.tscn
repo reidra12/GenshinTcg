@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://byc2oa4wy6tk4" path="res://scenes/hand.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://ky6o0s3ixeeq" path="res://scripts/BattleManager.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c0j3chu66dso7" path="res://scenes/deck_pile.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://u22icymsnu2h" path="res://scenes/discard_pile.tscn" id="5_tbgi4"]
 
 [node name="main" type="Node2D" unique_id=1304966097]
 
@@ -56,6 +57,17 @@ offset_bottom = 1159.6393
 scale = Vector2(0.27367026, 0.22517686)
 battle_manager = NodePath("../BattleManager")
 
+[node name="discard_pile" parent="." unique_id=1193940169 node_paths=PackedStringArray("battle_manager") instance=ExtResource("5_tbgi4")]
+offset_left = 942.99994
+offset_top = 275.0
+offset_right = 942.99994
+offset_bottom = 275.0
+scale = Vector2(0.28382868, 0.24609172)
+battle_manager = NodePath("../BattleManager")
+
 [connection signal="pressed" from="Draw" to="BattleManager" method="_on_draw_pressed"]
 [connection signal="pressed" from="Discard" to="BattleManager" method="_on_discard_pressed"]
 [connection signal="pressed" from="apply_effects" to="BattleManager" method="_on_apply_effects_pressed"]
+
+[editable path="deck_pile"]
+[editable path="discard_pile"]

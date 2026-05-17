@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://veq2ck8tqtuc"]
+[gd_scene format=3 uid="uid://cxntql3k1xafw"]
 
-[ext_resource type="Script" path="res://scripts/DeckList.gd" id="1_eipmx"]
+[ext_resource type="Script" uid="uid://cv3l2711bt6dw" path="res://scripts/card_list.gd" id="1_iarkj"]
 [ext_resource type="Texture2D" uid="uid://dprcnv103hdeo" path="res://asset/Amber_Character_Card.png" id="2_a6mj5"]
 
 [node name="DeckList" type="Control" unique_id=634640272]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eipmx")
+script = ExtResource("1_iarkj")
 
 [node name="TextureRect" type="ColorRect" parent="." unique_id=195962590]
 custom_minimum_size = Vector2(48, 0)
